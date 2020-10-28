@@ -6,13 +6,6 @@
 // La partita termina quando il giocatore inserisce un numero "vietato" o raggiunge il numero massimo possibile di numeri consentiti.
 // Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l'utente ha inserito un numero consentito.
 
-function randomInt(min, max) {
-  var min = Math.ceil(min);
-  var max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-  // restituisce un numero random compreso fra min e max, estremi inclusi
-}
-
 function mescola(array) {
   var currentIndex = array.length, temporaryValue, randomIndex;
   while (0 !== currentIndex) {
@@ -35,4 +28,3 @@ for (var i = 1; i <= 100; i++) {
 var totalMixedNumbers = mescola(totalNumbers); // rimescolo i numeri dell'array
 
 var loserNumbers = totalMixedNumbers.splice( 84); // elimino 84 elementi dall'array rimescolato, ottenendo 16 numeri casuali
-// console.log(loserNumbers);
