@@ -43,7 +43,17 @@ document.getElementById("gioca").addEventListener("click", function(){
   var messaggioErrore = document.getElementById("errore");
   var punteggio = document.getElementById("punteggio");
 
-  numeriInseriti.push(inputNumber);
-  // aggiungo all'array dei numeri inseriti dall'utente il numero che l'utente sta, per l'appunto, inserendo
-
+  if ((inputNumber < 1) || (inputNumber > 100))  {
+    messaggioErrore.innerHTML = "Inserire valori numerici compresi fra 1 e 100";
+  } else if (numeriInseriti.includes(inputNumber)) {
+    messaggioErrore.innerHTML = "Hai già inserito questo numero, non cercare di imbrogliare";
+    // fa in modo che l'utente non inserisca numeri che ha già inserito
+  } else if (loserNumbers.includes(inputNumber)) {
+    punteggio.innerHTML = "Il tuo punteggio finale è: " + numeriInseriti.length;
+  }
+  else {
+    numeriInseriti.push(inputNumber);
+    //  se il numero che l'utente sta inserendo non è già stato inserito, aggiungo all'array dei numeri inseriti dall'utente il numero che l'utente sta, per l'appunto, inserendo
+    punteggio.innerHTML = "Il tuo punteggio parziale è: " + numeriInseriti.length;
+  }
 });
