@@ -5,3 +5,14 @@
 // Se il numero è presente nella lista dei numeri generati, la partita termina, altrimenti si continua chiedendo all'utente un altro numero.
 // La partita termina quando il giocatore inserisce un numero "vietato" o raggiunge il numero massimo possibile di numeri consentiti.
 // Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l'utente ha inserito un numero consentito.
+
+function randomInt(min, max) {
+  var min = Math.ceil(min);
+  var max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+  // restituisce un numero random compreso fra min e max, estremi inclusi
+}
+
+for (var i = 1; i <=16; i++) {
+  console.log(randomInt(1, 100));
+}
