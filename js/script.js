@@ -19,12 +19,31 @@ function mescola(array) {
   // restituisce un array mescolato
 }
 
+// generazione di 16 numeri casuali
 var totalNumbers = new Array();
-
+// inizializzo l'array
 for (var i = 1; i <= 100; i++) {
   totalNumbers.push(i);
 }
+// inserisco i valori nell'array
+var totalMixedNumbers = mescola(totalNumbers);
+// rimescolo i numeri dell'array
+var loserNumbers = totalMixedNumbers.splice( 84);
+// elimino 84 elementi dall'array rimescolato, ottenendo 16 numeri casuali
 
-var totalMixedNumbers = mescola(totalNumbers); // rimescolo i numeri dell'array
+var numeriInseriti = new Array();
+// inizializzo l'array che conterrà i numeri inseriti dall'utente fuori dalla funzione del button, altrimenti lo reinizializzerebbe ad ogni click
 
-var loserNumbers = totalMixedNumbers.splice( 84); // elimino 84 elementi dall'array rimescolato, ottenendo 16 numeri casuali
+document.getElementById("gioca").addEventListener("click", function(){
+
+  // variabile input
+  var inputNumber = parseInt(document.getElementById("inputNumber").value);
+
+  // varialbili output
+  var messaggioErrore = document.getElementById("errore");
+  var punteggio = document.getElementById("punteggio");
+
+  numeriInseriti.push(inputNumber);
+  // aggiungo all'array dei numeri inseriti dall'utente il numero che l'utente sta, per l'appunto, inserendo
+
+});
