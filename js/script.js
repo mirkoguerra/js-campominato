@@ -13,6 +13,26 @@ function randomInt(min, max) {
   // restituisce un numero random compreso fra min e max, estremi inclusi
 }
 
-for (var i = 1; i <=16; i++) {
-  console.log(randomInt(1, 100));
+function mescola(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex;
+  while (0 !== currentIndex) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+  return array;
+  // restituisce un array mescolato
 }
+
+var totalNumbers = new Array();
+
+for (var i = 1; i <= 100; i++) {
+  totalNumbers.push(i);
+}
+
+var totalMixedNumbers = mescola(totalNumbers); // rimescolo i numeri dell'array
+
+var loserNumbers = totalMixedNumbers.splice( 84); // elimino 84 elementi dall'array rimescolato, ottenendo 16 numeri casuali
+// console.log(loserNumbers);
