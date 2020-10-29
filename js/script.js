@@ -29,7 +29,7 @@ function mescola(array) {
 // creo una funzione che rimescola i numeri nell'array
 var totalMixedNumbers = mescola(totalNumbers);
 // rimescolo i numeri dell'array
-var loserNumbers = totalMixedNumbers.splice( 84);
+var loserNumbers = totalMixedNumbers.splice(84);
 // elimino 84 elementi dall'array rimescolato, ottenendo 16 numeri casuali
 
 var numeriInseriti = new Array();
@@ -41,34 +41,33 @@ document.getElementById("gioca").addEventListener("click", function(){
   var inputNumber = document.getElementById("inputNumber").value;
 
   // varialbili output
-  var messaggioErrore = document.getElementById("errore");
-  var punteggio = document.getElementById("punteggio");
+  var messaggio = document.getElementById("messaggio");
 
   // gestisco i casi in cui l'utente non inserisce un numero o lo inserisce non intero
   if (isNaN(inputNumber)) {
-    messaggioErrore.innerHTML = "Inserire valori numerici";
+    messaggio.innerHTML = "Inserire valori numerici. Il tuo punteggio parziale è: " + numeriInseriti.length;
   } else {
     inputNumber = parseInt(inputNumber);
       // annido un if else per gestire i valori numerici
       if ((inputNumber < 1) || (inputNumber > 100))  {
-      messaggioErrore.innerHTML = "Inserire valori numerici compresi fra 1 e 100";
+      messaggio.innerHTML = "Inserire valori numerici compresi fra 1 e 100. Il tuo punteggio parziale è: " + numeriInseriti.length;
       // non permetto all'utente di inserire valori al di fuori del range
       } else if (numeriInseriti.includes(inputNumber)) {
-      messaggioErrore.innerHTML = "Hai già inserito questo numero, non cercare di imbrogliare";
+      messaggio.innerHTML = "Hai già inserito questo numero, non cercare di imbrogliare. Il tuo punteggio parziale è: " + numeriInseriti.length;
       // fa in modo che l'utente non inserisca numeri che ha già inserito
       } else if (loserNumbers.includes(inputNumber)) {
-      punteggio.innerHTML = "Il tuo punteggio finale è: " + numeriInseriti.length;
+      messaggio.innerHTML = "Il tuo punteggio finale è: " + numeriInseriti.length;
       // gestisce il caso di finale prematuro di partita a causa dell'inserimento di un numero presente nella lista di numeri perdenti
       }
       else {
       numeriInseriti.push(inputNumber);
       //  le prove precedenti non hanno dato blocchi, allora aggiungo all'array dei numeri inseriti dall'utente il numero che l'utente sta, per l'appunto, inserendo
-      punteggio.innerHTML = "Il tuo punteggio parziale è: " + numeriInseriti.length;
+      messaggio.innerHTML = "Il tuo punteggio parziale è: " + numeriInseriti.length;
       }
   }
 });
 
 // gestisco il caso limite di vittoria da parte dell'utente
 if (numeriInseriti.length == 84) {
-  punteggio.innerHTML = "Hai raggiunto il punteggio massimo di: " + numeriInseriti.length;
+  messaggio.innerHTML = "Hai raggiunto il punteggio massimo di: " + numeriInseriti.length;
 }
