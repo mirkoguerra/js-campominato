@@ -5,11 +5,29 @@
 // Se il numero è presente nella lista dei numeri generati, la partita termina, altrimenti si continua chiedendo all'utente un altro numero.
 // La partita termina quando il giocatore inserisce un numero "vietato" o raggiunge il numero massimo possibile di numeri consentiti.
 // Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l'utente ha inserito un numero consentito.
+// BONUS: (da fare solo se funziona tutto il resto)
+// all'inizio il software richiede anche una difficoltà all'utente che cambia il range di numeri casuali:
+// con difficoltà 0 => tra 1 e 100
+// con difficoltà 1 =>  tra 1 e 80
+// con difficoltà 2 => tra 1 e 50
+
 
 // definisco le variabili per la creazione di più livelli
-var min = 1;
-var max = 3;
+var min = 16;
+var max = 100;
 
+// per far scegliere il livello di difficoltà
+var difficoltà = parseInt(prompt("Inserisci un numero (0, 1 o 2) per selezionare il livello di difficoltà"));
+if (difficoltà == 1) {
+  max = 80;
+} else if (difficoltà == 2){
+  max = 50;
+}
+
+// dirà all'utente il range
+var numberBetween = document.getElementById("numberBetween");
+// inserire un numero compreso tra...
+numberBetween.innerHTML = "Inserire un numero compreso fra 1 e " + max;
 
 // generazione di min numeri casuali
 var totalNumbers = new Array();
@@ -40,7 +58,7 @@ var numeriInseriti = new Array();
 
 document.getElementById("gioca").addEventListener("click", function(){
 
-  // variabile input
+  // variabili input
   var inputNumber = document.getElementById("inputNumber").value;
 
   // varialbili output
