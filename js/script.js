@@ -11,7 +11,6 @@
 // con difficoltà 1 =>  tra 1 e 80
 // con difficoltà 2 => tra 1 e 50
 
-
 // definisco le variabili per la creazione di più livelli
 var min = 16;
 var max = 100;
@@ -58,10 +57,10 @@ var numeriInseriti = new Array();
 
 document.getElementById("gioca").addEventListener("click", function(){
 
-  // variabili input
+  // variabile input
   var inputNumber = document.getElementById("inputNumber").value;
 
-  // varialbili output
+  // varialbile output
   var messaggio = document.getElementById("messaggio");
 
   // gestisco i casi in cui l'utente non inserisce un numero o lo inserisce non intero
