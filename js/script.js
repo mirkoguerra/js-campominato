@@ -6,12 +6,15 @@
 // La partita termina quando il giocatore inserisce un numero "vietato" o raggiunge il numero massimo possibile di numeri consentiti.
 // Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l'utente ha inserito un numero consentito.
 
+// definisco le variabili per la creazione di più livelli
+var min = 1;
+var max = 3;
 
 
-// generazione di 16 numeri casuali
+// generazione di min numeri casuali
 var totalNumbers = new Array();
 // inizializzo l'array
-for (var i = 1; i <= 100; i++) {
+for (var i = 1; i <= max; i++) {
   totalNumbers.push(i);
 }
 // inserisco i valori nell'array
@@ -29,8 +32,8 @@ function mescola(array) {
 // creo una funzione che rimescola i numeri nell'array
 var totalMixedNumbers = mescola(totalNumbers);
 // rimescolo i numeri dell'array
-var loserNumbers = totalMixedNumbers.splice(84);
-// elimino 84 elementi dall'array rimescolato, ottenendo 16 numeri casuali
+var loserNumbers = totalMixedNumbers.splice(max-min);
+// elimino (max-min) elementi dall'array rimescolato, ottenendo min numeri casuali
 
 var numeriInseriti = new Array();
 // inizializzo l'array che conterrà i numeri inseriti dall'utente fuori dalla funzione del button, altrimenti lo reinizializzerebbe ad ogni click
@@ -49,8 +52,8 @@ document.getElementById("gioca").addEventListener("click", function(){
   } else {
     inputNumber = parseInt(inputNumber);
       // annido un if else per gestire i valori numerici
-      if ((inputNumber < 1) || (inputNumber > 100))  {
-      messaggio.innerHTML = "Inserire valori numerici compresi fra 1 e 100. Il tuo punteggio parziale è: " + numeriInseriti.length;
+      if ((inputNumber < 1) || (inputNumber > max))  {
+      messaggio.innerHTML = "Inserire valori numerici compresi fra 1 e " + max + ". Il tuo punteggio parziale è: " + numeriInseriti.length;
       // non permetto all'utente di inserire valori al di fuori del range
       } else if (numeriInseriti.includes(inputNumber)) {
       messaggio.innerHTML = "Hai già inserito questo numero, non cercare di imbrogliare. Il tuo punteggio parziale è: " + numeriInseriti.length;
@@ -61,13 +64,13 @@ document.getElementById("gioca").addEventListener("click", function(){
       }
       else {
       numeriInseriti.push(inputNumber);
-      //  le prove precedenti non hanno dato blocchi, allora aggiungo all'array dei numeri inseriti dall'utente il numero che l'utente sta, per l'appunto, inserendo
       messaggio.innerHTML = "Il tuo punteggio parziale è: " + numeriInseriti.length;
+      //  le prove precedenti non hanno dato blocchi, allora aggiungo all'array dei numeri inseriti dall'utente il numero che l'utente sta, per l'appunto, inserendo
       }
   }
-});
 
-// gestisco il caso limite di vittoria da parte dell'utente
-if (numeriInseriti.length == 84) {
-  messaggio.innerHTML = "Hai raggiunto il punteggio massimo di: " + numeriInseriti.length;
-}
+  // gestisco il caso limite di vittoria da parte dell'utente
+  if (numeriInseriti.length == (max-min)) {
+    messaggio.innerHTML = "Hai raggiunto il punteggio massimo di: " + numeriInseriti.length;
+  }
+});
