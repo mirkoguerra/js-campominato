@@ -17,7 +17,7 @@ div {
   align-items: center;
   justify-content: center;
 }
-div > *:not {
+div > * {
   margin-bottom: 10px;
 }
 h1 {
